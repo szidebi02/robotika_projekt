@@ -6,12 +6,15 @@ Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer fig
 - hőmérséklet érzékelő
 - fényérzékelő
 - talajnedvesség érzékelő
-- kijelző
+- lcd 16x2 kijelző
 - hangszóró
-- 1 színű ledek:
-- kék
-- sárga
-- zöld
+- 1 színű ledek a megfigyeléshez:
+  - kék
+  - sárga
+  - zöld
+- 1 színű ledek a szirénázáshoz:
+  - kék
+  - prios  
 - ellenállások ledekhez
 - jumper kábelek
 ## 3. Használati esetek (működés)
