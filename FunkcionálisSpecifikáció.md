@@ -10,10 +10,15 @@ Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer fig
 - hangszóró
 - 1 színű ledek:
 - kék
-- piros
 - sárga
+- zöld
 - ellenállások ledekhez
 - jumper kábelek
 ## 3. Használati esetek (működés)
+- A kijelzőn folyamatosan figyelemmel követhetjük a hőmérséklet, fény és talajnedvesség adatokat.
+- A kék led kigyullad amennyiben a talajnedvesség nem megfelelő.
+- A sárga led kigyullad amennyiben a fény nem megfelelő. 
+- A zöld led kigyillad amennyiben a hőmérséklet nem megfelelő.
+- Sziréna indul -> nagy a baj
 ## 4. Képernyőtervek (sematikus rajz és CAD tervrajz)
 ## 5. Forgatókönyvek (állapotátmenet gráf)
