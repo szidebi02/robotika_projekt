@@ -4,11 +4,11 @@ A projektrünk egy növény gondozó/figyelő rendszer amely segítségével fen
 Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer figyelmezteti a felhasználót a változtatásra.
 ## 2. Alkatrész lista:
 - Arduino Uno R3
-- hőmérséklet érzékelő
-- fényérzékelő
+- hőmérséklet-érzékelő (TMP36)
+- szórtfény-érzékelő (fototranzisztor)
 - talajnedvesség érzékelő
-- lcd 16x2 kijelző
-- hangszóró
+- lcd kijelző (MCP23008-alapú, 32 LCD 16 x 2 (I2C))
+- hangszóró (Piezo)
 - 1 színű ledek a megfigyeléshez:
   - kék
   - sárga
