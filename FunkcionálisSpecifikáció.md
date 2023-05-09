@@ -25,6 +25,8 @@ Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer fig
 - A zöld led kigyillad amennyiben a hőmérséklet nem megfelelő.
 - Sziréna indul -> nagy a baj
 ## 4. Képernyőtervek (sematikus rajz és CAD tervrajz)
+![image](https://user-images.githubusercontent.com/113984073/237051403-40101bc5-e47f-4ebc-b38e-6400621df808.png)
+
 ![image](https://user-images.githubusercontent.com/113984073/237050119-b489ff32-7ad7-4129-98fc-f4e6bcf93c1e.png)
 
 ![image](https://user-images.githubusercontent.com/113984073/237050875-dda52524-06cd-4d84-aa4a-ae293f6af320.png)
