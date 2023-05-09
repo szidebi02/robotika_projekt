@@ -1,6 +1,7 @@
 # Funkcionális specifikáció
 ## 1. Vágyálomrendszer leírása
-A projektrünk egy ... amelynek legfontosabb funkciója a szirénázás.
+A projektrünk egy növény gondozó/figyelő rendszer amely segítségével fenntarthatjuk a virágaink, növényeink számára megfelelő életkörülményeket. A hőmérséklet érzékelő, fényérzékelő és talajnedvesség érzékelővel figyelemmel követhezjük a körülmények alakulását.
+Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer figyelmezteti a felhasználót a változtatásra.
 ## 2. Alkatrész lista:
 - hőmérséklet érzékelő
 - fényérzékelő
