@@ -15,7 +15,7 @@ Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer fig
   - zöld
 - 1 színű ledek a szirénázáshoz:
   - kék
-  - prios  
+  - piros  
 - ellenállások ledekhez
 - jumper kábelek
 ## 3. Használati esetek (működés)
