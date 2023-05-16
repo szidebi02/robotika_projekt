@@ -55,4 +55,4 @@ Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer fig
 - HSI: hőmérésklet szenzor nem megfelelő értéket mér
 
 ### 5.2 Állapotátmenet gráf:
-![Állapotátmenet gráf](img/AllapotAtmenetGraf.drawio)
+![Állapotátmenet gráf](img/AllapotAtmenetGraf.png)
