@@ -17,20 +17,16 @@ int State = 0;
 void State0()
  {
   	digitalWrite(ninored,LOW);
-   	digitalWrite(ninoblue,LOW);
+   digitalWrite(ninoblue,LOW);
+   tone(sound, 1000);
   	delay(1000);
  }
 void State1()
  {
   	digitalWrite(ninored,HIGH);
-   	digitalWrite(ninoblue,HIGH);
+   digitalWrite(ninoblue,HIGH);
+   noTone(sound);
   	delay(1000);
- }
-  void State2()
- {
-  	digitalWrite(ninored,HIGH);
-   	digitalWrite(ninoblue,LOW);
-    delay(1000);
  }
 
 void setup()
@@ -77,13 +73,10 @@ void loop()
       		State = 0;
       		State0();
       		break;
-      
-      case 2:
-      		State = 0;
-      		State0();
-      		break;
     }
   }
+  digitalWrite(ninored,HIGH);
+  digitalWrite(ninoblue,LOW);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("Temp: ");
