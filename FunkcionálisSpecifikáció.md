@@ -35,3 +35,22 @@ Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer fig
 
 
 ## 5. Forgatókönyvek (állapotátmenet gráf)
+
+### 5.1 állapotok jelölése:
+- A: alapállapot (mind a három led világít)
+- K: kék talajnedvesség megfigyelő led nem világít
+- S: sárga fény megfigyelő led nem világít
+- Z: zöld hőmérséklet megfigyelő led nem világít
+- KS: kék talajnedvesség megfigyelő és sárga fény megfigyelő led nem világít
+- KZ: kék talajnedvesség megfigyelő és zöld hőmérséklet megfigyelő led nem világít
+- ZS: zöld hőmérséklet megfigyelő és sárga fény megfigyelő led nem világít
+- SZ: sziréna indul (egyik led sem világít - nagy baj)
+
+### 5.1 állapot átmenetek jelölése
+- TSN: talajnedvesség szenzor nem megfelelő értéket mér
+- TSI: talajnedvesség szenzor megfelelő értéket mér
+- FSN: fény szenzor nem megfelelő értéket mér
+- FSI: fény szenzor nem megfelelő értéket mér
+- HSN: hőmérésklet szenzor nem megfelelő értéket mér
+- HSI: hőmérésklet szenzor nem megfelelő értéket mér
+
