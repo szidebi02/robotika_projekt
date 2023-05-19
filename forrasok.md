@@ -1,3 +1,6 @@
+# Órai kódok segítségül:
+https://drive.google.com/drive/folders/1UiRNDdoW83xq2dbdUS8bdhc_mWqSXaI2?usp=sharing
+
 ### Talajnedvességmérő szenzor:
 https://arduinogetstarted.com/tutorials/arduino-soil-moisture-sensor
 
