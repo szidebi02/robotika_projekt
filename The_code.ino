@@ -13,25 +13,92 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 int celsius = 0;
 int light = 0;
 int soil = 0;
-int baselinetemp = 0;
-int baselightlevel = 0;
-int basesoillevel = 0;
+int baselinetemp = 27;
+int baselightlevel = 50;
+int basesoillevel = 300;
 
 int State = 0;
+
+void LedStates()
+{
+  if (celsius < baselinetemp)
+  {
+    digitalWrite(ledg, HIGH);
+  }
+  if (celsius >= baselinetemp)
+  {
+    digitalWrite(ledg, LOW);
+  }
+
+  if (light < baselightlevel)
+  {
+    digitalWrite(light, HIGH);
+  }
+  if (light >= baselightlevel)
+  {
+    digitalWrite(light, LOW);
+  }
+
+  if (soil < basesoillevel)
+  {
+    digitalWrite(soil, HIGH);
+  }
+  if (soil >= basesoillevel)
+  {
+    digitalWrite(soil, LOW);
+  }
+}
+
+void lcdWrite()
+{
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: ");
+  lcd.print(celsius);
+
+  switch (digitalRead(light))
+  {
+  case LOW:
+    lcd.print("Suitable");
+    break;
+  case HIGH:
+    lcd.print("Dark");
+  }
+
+  lcd.setCursor(0, 1);
+  switch (digitalRead(soil))
+  {
+  case LOW:
+    lcd.print("Wet");
+    break;
+  case HIGH:
+    lcd.print("Dry");
+  }
+}
+
 void State0()
- {
-  	digitalWrite(ninored,LOW);
-   digitalWrite(ninoblue,LOW);
-   tone(sound, 1000);
-  	delay(1000);
- }
+{
+  LedStates();
+  lcdWrite();
+}
 void State1()
- {
-  	digitalWrite(ninored,HIGH);
-   digitalWrite(ninoblue,HIGH);
-   noTone(sound);
-  	delay(1000);
- }
+{
+  LedStates();
+  lcdWrite();
+  digitalWrite(ninored, LOW);
+  digitalWrite(ninoblue, LOW);
+  tone(sound, 1000);
+  delay(1000);
+}
+void State2()
+{
+  LedStates();
+  lcdWrite();
+  digitalWrite(ninored, HIGH);
+  digitalWrite(ninoblue, HIGH);
+  noTone(sound);
+  delay(1000);
+}
 
 void setup()
 {
@@ -46,81 +113,46 @@ void setup()
   pinMode(tmp, INPUT);
   pinMode(lightsen, INPUT);
   pinMode(soilsen, INPUT);
-  pinMode(sound, OUTPUT);;
+  pinMode(sound, OUTPUT);
+  ;
 }
 
 void loop()
 {
-  digitalWrite(ledg,LOW);
-  digitalWrite(leds,LOW);
-  digitalWrite(ledb,LOW);
-  digitalWrite(ninored,HIGH);
-  digitalWrite(ninoblue,LOW);
-  baselinetemp = 27;
-  baselightlevel= 50;
-  basesoillevel = 300;
+  digitalWrite(ledg, LOW);
+  digitalWrite(leds, LOW);
+  digitalWrite(ledb, LOW);
+  digitalWrite(ninored, HIGH);
+  digitalWrite(ninoblue, LOW);
+
   celsius = map(((analogRead(tmp) - 20) * 3.04), 0, 1023, -40, 125);
+  light = analogRead(lightsen);
+  soil = analogRead(soilsen);
 
-  if (celsius < baselinetemp){
-   digitalWrite(ledg, HIGH); 
-  }
-  if (celsius >= baselinetemp){
-   digitalWrite(ledg, LOW); 
-  }
-
-  if (light < baselightlevel)
+  switch (State)
   {
-    digitalWrite(light, HIGH);
-  }
-  if (light>=baselightlevel)
-  {
-    digitalWrite(light, LOW);
-  }
-
-  if (soil < basesoillevel)
-  {
-    digitalWrite(soil, HIGH);
-  }
-  if (soil >= basesoillevel)
-  {
-    digitalWrite(soil,LOW);
-  }
-  
-  
-  
-  while (ledg != LOW && leds != LOW && ledb != LOW){
-  	switch (State)
+  case 0:
+    State0();
+    if (ledg != LOW && ledb != LOW && leds != LOW)
     {
-    	case 0:
-      		State = 1;
-      		State1();
-      		break;
-      
-      	case 1:
-      		State = 0;
-      		State0();
-      		break;
+      State = 1;
     }
-  }
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("Temp: ");
-  lcd.print(celsius);
-  switch (digitalRead(light))
-  {
-  case LOW:
-    lcd.print("Suitable");
     break;
-  case HIGH:
-    lcd.print("Dark");
-  }
-  
-  switch (digitalRead(soil))
-  {
-  case LOW:
-    lcd.print("Wet");
+  case 1:
+    State1();
+    while (ledg != LOW && ledb != LOW && leds != LOW)
+    {
+      State = 2;
+    }
+    State = 0;
     break;
-  case HIGH:
-    lcd.print("Dry");
+  case 2:
+    State2();
+    while (ledg != LOW && ledb != LOW && leds != LOW)
+    {
+      State = 1;
+    }
+    State = 0;
+    break;
   }
 }
