@@ -11,7 +11,11 @@
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 int celsius = 0;
+int light = 0;
+int soil = 0;
 int baselinetemp = 0;
+int baselightlevel = 0;
+int basesoillevel = 0;
 
 int State = 0;
 void State0()
@@ -53,13 +57,36 @@ void loop()
   digitalWrite(ninored,HIGH);
   digitalWrite(ninoblue,LOW);
   baselinetemp = 27;
+  baselightlevel= 50;
+  basesoillevel = 300;
   celsius = map(((analogRead(tmp) - 20) * 3.04), 0, 1023, -40, 125);
+
   if (celsius < baselinetemp){
-   digitalWrite(ledg, LOW); 
-  }
-  if (celsius >= baselinetemp){
    digitalWrite(ledg, HIGH); 
   }
+  if (celsius >= baselinetemp){
+   digitalWrite(ledg, LOW); 
+  }
+
+  if (light < baselightlevel)
+  {
+    digitalWrite(light, HIGH);
+  }
+  if (light>=baselightlevel)
+  {
+    digitalWrite(light, LOW);
+  }
+
+  if (soil < basesoillevel)
+  {
+    digitalWrite(soil, HIGH);
+  }
+  if (soil >= basesoillevel)
+  {
+    digitalWrite(soil,LOW);
+  }
+  
+  
   
   while (ledg != LOW && leds != LOW && ledb != LOW){
   	switch (State)
@@ -75,10 +102,25 @@ void loop()
       		break;
     }
   }
-  digitalWrite(ninored,HIGH);
-  digitalWrite(ninoblue,LOW);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("Temp: ");
   lcd.print(celsius);
+  switch (digitalRead(light))
+  {
+  case LOW:
+    lcd.print("Suitable");
+    break;
+  case HIGH:
+    lcd.print("Dark");
+  }
+  
+  switch (digitalRead(soil))
+  {
+  case LOW:
+    lcd.print("Wet");
+    break;
+  case HIGH:
+    lcd.print("Dry");
+  }
 }
