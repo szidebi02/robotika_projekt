@@ -62,20 +62,20 @@ void lcdWrite()
 
   switch (digitalRead(light))
   {
-  case LOW:
+  case HIGH:
     lcd.print("Suitable");
     break;
-  case HIGH:
+  case LOW:
     lcd.print("Dark");
   }
 
   lcd.setCursor(0, 1);
   switch (digitalRead(soil))
   {
-  case LOW:
+  case HIGH:
     lcd.print("Wet");
     break;
-  case HIGH:
+  case LOW:
     lcd.print("Dry");
   }
 }
