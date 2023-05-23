@@ -29,7 +29,7 @@ Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer fig
 ![image](https://user-images.githubusercontent.com/113984073/237051403-40101bc5-e47f-4ebc-b38e-6400621df808.png)
 
 ### 4.2: Fritzing tervrajz:
-![image](https://github.com/szidebi02/robotika_projekt/assets/113984073/7b622521-79aa-4d44-ad1a-f04a78e89b3f)
+![image](https://github.com/szidebi02/robotika_projekt/assets/113984073/b8ab2a2e-c113-4459-a1d9-20cd77b0b886)
 
 ## 5. Forgatókönyvek (állapotátmenet gráf)
 
