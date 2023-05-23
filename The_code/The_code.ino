@@ -6,7 +6,7 @@
 #define ledb 7
 #define ninored 11
 #define ninoblue 12
-#define tmp 0
+#define tmp 5
 #define lightsen 1
 #define soilsen 2
 #define sound 9
