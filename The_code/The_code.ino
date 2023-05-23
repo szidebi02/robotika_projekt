@@ -9,7 +9,7 @@
 #define tmp 5
 #define lightsen 1
 #define soilsen 2
-#define sound 9
+#define sound 6
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 OneWire oneWire(tmp);
