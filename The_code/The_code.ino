@@ -1,4 +1,6 @@
 #include <LiquidCrystal_I2C.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
 #define ledg 2
 #define leds 4
 #define ledb 7
@@ -10,6 +12,8 @@
 #define sound 9
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
+OneWire oneWire(tmp);
+DallasTemperature sensors(&oneWire);
 int celsius = 0;
 int light = 0;
 int soil = 0;
@@ -21,34 +25,31 @@ int State = 0;
 
 void LedStates()
 {
-  switch(celsius < baselinetemp)
+  if (celsius < baselinetemp)
   {
-  case true:
-    digitalWrite(ledg, HIGH);
-    break;
-  case false:
     digitalWrite(ledg, LOW);
-    break;
+  }
+  if (celsius >= baselinetemp)
+  {
+    digitalWrite(ledg, HIGH);
   }
 
-  switch (light < baselightlevel)
+  if (light < baselightlevel)
   {
-  case true:
-    digitalWrite(light, HIGH);
-    break;
-  case false:
     digitalWrite(light, LOW);
-    break;
+  }
+  if (light >= baselightlevel)
+  {
+    digitalWrite(light, HIGH);
   }
 
-  switch (soil < basesoillevel)
+  if (soil < basesoillevel)
   {
-  case true:
-    digitalWrite(soil, HIGH);
-    break;
-  case false:
     digitalWrite(soil, LOW);
-    break;
+  }
+  if (soil >= basesoillevel)
+  {
+    digitalWrite(soil, HIGH);
   }
 }
 
@@ -62,11 +63,10 @@ void lcdWrite()
   switch (digitalRead(light))
   {
   case LOW:
-    lcd.print("Light");
+    lcd.print("Suitable");
     break;
   case HIGH:
     lcd.print("Dark");
-    break;
   }
 
   lcd.setCursor(0, 1);
@@ -77,10 +77,8 @@ void lcdWrite()
     break;
   case HIGH:
     lcd.print("Dry");
-    break;
   }
 }
-
 
 void State0()
 {
@@ -120,20 +118,24 @@ void setup()
   pinMode(lightsen, INPUT);
   pinMode(soilsen, INPUT);
   pinMode(sound, OUTPUT);
+  ;
 }
 
 void loop()
 {
+  sensors.requestTemperatures();
   digitalWrite(ledg, LOW);
   digitalWrite(leds, LOW);
   digitalWrite(ledb, LOW);
   digitalWrite(ninored, HIGH);
   digitalWrite(ninoblue, LOW);
-
-  celsius = map(((analogRead(tmp) - 20) * 3.04), 0, 1023, -40, 125);
+  celsius = sensors.getTempCByIndex(0);
   light = analogRead(lightsen);
   soil = analogRead(soilsen);
-
+  lcd.clear();
+  lcd.setCursor(6, 1);
+  lcd.print(light);
+  delay(10000);
   switch (State)
   {
   case 0:
