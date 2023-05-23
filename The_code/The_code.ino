@@ -21,31 +21,34 @@ int State = 0;
 
 void LedStates()
 {
-  if (celsius < baselinetemp)
+  switch(celsius < baselinetemp)
   {
+  case true:
     digitalWrite(ledg, HIGH);
-  }
-  if (celsius >= baselinetemp)
-  {
+    break;
+  case false:
     digitalWrite(ledg, LOW);
+    break;
   }
 
-  if (light < baselightlevel)
+  switch (light < baselightlevel)
   {
+  case true:
     digitalWrite(light, HIGH);
-  }
-  if (light >= baselightlevel)
-  {
+    break;
+  case false:
     digitalWrite(light, LOW);
+    break;
   }
 
-  if (soil < basesoillevel)
+  switch (soil < basesoillevel)
   {
+  case true:
     digitalWrite(soil, HIGH);
-  }
-  if (soil >= basesoillevel)
-  {
+    break;
+  case false:
     digitalWrite(soil, LOW);
+    break;
   }
 }
 
@@ -59,10 +62,11 @@ void lcdWrite()
   switch (digitalRead(light))
   {
   case LOW:
-    lcd.print("Suitable");
+    lcd.print("Light");
     break;
   case HIGH:
     lcd.print("Dark");
+    break;
   }
 
   lcd.setCursor(0, 1);
@@ -73,8 +77,10 @@ void lcdWrite()
     break;
   case HIGH:
     lcd.print("Dry");
+    break;
   }
 }
+
 
 void State0()
 {
@@ -114,7 +120,6 @@ void setup()
   pinMode(lightsen, INPUT);
   pinMode(soilsen, INPUT);
   pinMode(sound, OUTPUT);
-  ;
 }
 
 void loop()
