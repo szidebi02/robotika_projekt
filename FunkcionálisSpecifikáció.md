@@ -3,11 +3,11 @@
 A projektrünk egy növény gondozó/figyelő rendszer amely segítségével fenntarthatjuk a virágaink, növényeink számára megfelelő életkörülményeket. A hőmérséklet érzékelő, fényérzékelő és talajnedvesség érzékelővel figyelemmel követhezjük a körülmények alakulását.
 Nem megfelelő létszükségletek esetén a ledek illetve a szirénarandszer figyelmezteti a felhasználót a változtatásra.
 ## 2. Alkatrész lista:
-- Arduino Uno R3
-- hőmérséklet-érzékelő (TMP36)
+- Arduino Nano
+- hőmérséklet-érzékelő (Dallas ds18b20)
 - szórtfény-érzékelő (fototranzisztor)
 - talajnedvesség érzékelő
-- lcd kijelző (MCP23008-alapú, 32 LCD 16 x 2 (I2C))
+- lcd kijelző (32 LCD 16 x 2 (I2C))
 - hangszóró (Piezo)
 - 1 színű ledek a megfigyeléshez:
   - kék
