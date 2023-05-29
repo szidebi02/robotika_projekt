@@ -61,7 +61,7 @@ void lcdWrite()
 
   lcd.setCursor(6, 1);
   if (MoistureLevel(analogRead(moisturesen))) {
-    lcd.print("Wer");
+    lcd.print("Wet");
   }
   else {
     lcd.print("Dry");
@@ -71,13 +71,15 @@ void lcdWrite()
 void State0(){
   digitalWrite(ninored, HIGH);
   digitalWrite(ninoblue, HIGH);
-  //Hang1
+  tone(sound, 1000, 500);
+  noTone(sound);
 }
 
 void State1(){
   digitalWrite(ninored, LOW);
   digitalWrite(ninoblue, LOW);
-  //Hang2
+  tone(sound, 1500, 500);
+  noTone(sound);
 }
 
 void setup()
@@ -110,6 +112,7 @@ void loop()
   digitalWrite(ledb, LOW);
   digitalWrite(ninored, LOW);
   digitalWrite(ninoblue, LOW);
+  noTone(sound);
 
   lcdWrite();
   delay(1000);
